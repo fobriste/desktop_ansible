@@ -1,0 +1,41 @@
+hosts: localhost
+become: no
+tasks:
+  - name: set touchpad vars
+    dconf:
+      key: "{{ items.key }}"
+      value: "{{ items.value }}"
+      state: present
+    with_items:
+      - { key: "org.gnome.desktop.peripherals.touchpad.natural-scroll", value: "false" }
+      - { key: "org.gnome.desktop.peripherals.touchpad.two-finger-scrolling-enabled", value: "true" }
+      - { key: "org.gnome.desktop.peripherals.touchpad.tap-to-click", value: "true" }
+      - { key: "org.gnome.desktop.screensaver.lock-enabled", value: "false" }
+      - { key: "org.gnome.setting-daemon.plugins.power.sleep-inactive-ac-timeout", value: "3600" }
+      - { key: "org.gnome.setting-daemon.plugins.power.power-button-action", value: "hibernate" }
+  
+  - name: configure rpmfusion
+    dnf:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      -  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm
+      -  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm
+  
+  - name: install packages
+    dnf:
+      name:
+        - vim-enhanced
+        - gstreamer-plugins-ugly
+        - gstreamer-plugins-bad
+        - mplayer
+        - dconf-editor
+        - ansible
+      state: latest
+  
+  - name: setup vimrc
+    blockinfile:
+      path: /home/judd.obannon/.vimrc
+      block: |
+        autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
+  
