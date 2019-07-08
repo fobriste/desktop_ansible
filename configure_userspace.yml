@@ -14,25 +14,6 @@ tasks:
       - { key: "org.gnome.setting-daemon.plugins.power.sleep-inactive-ac-timeout", value: "3600" }
       - { key: "org.gnome.setting-daemon.plugins.power.power-button-action", value: "hibernate" }
   
-  - name: configure rpmfusion
-    dnf:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      -  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm
-      -  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm
-  
-  - name: install packages
-    dnf:
-      name:
-        - vim-enhanced
-        - gstreamer-plugins-ugly
-        - gstreamer-plugins-bad
-        - mplayer
-        - dconf-editor
-        - ansible
-      state: latest
-  
   - name: setup vimrc
     blockinfile:
       path: /home/judd.obannon/.vimrc
