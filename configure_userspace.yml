@@ -1,5 +1,6 @@
 - hosts: localhost
   become: no
+  ignore_errors: true
   tasks:
     - name: set touchpad vars
       dconf:
@@ -16,11 +17,13 @@
     - name: setup vimrc
       blockinfile:
         path: ~/.vimrc
+        create: true
         block: |
           autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
     - name: setup .bcrc
       blockinfile:
         path: ~/.bcrc
+        create: true
         block: |
           scale=2
     - name: push .bcrc into bash
