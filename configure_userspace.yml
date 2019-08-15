@@ -1,22 +1,21 @@
-hosts: localhost
-become: no
-tasks:
-  - name: set touchpad vars
-    dconf:
-      key: "{{ items.key }}"
-      value: "{{ items.value }}"
-      state: present
-    with_items:
-      - { key: "org.gnome.desktop.peripherals.touchpad.natural-scroll", value: "false" }
-      - { key: "org.gnome.desktop.peripherals.touchpad.two-finger-scrolling-enabled", value: "true" }
-      - { key: "org.gnome.desktop.peripherals.touchpad.tap-to-click", value: "true" }
-      - { key: "org.gnome.desktop.screensaver.lock-enabled", value: "false" }
-      - { key: "org.gnome.setting-daemon.plugins.power.sleep-inactive-ac-timeout", value: "3600" }
-      - { key: "org.gnome.setting-daemon.plugins.power.power-button-action", value: "hibernate" }
-  
-  - name: setup vimrc
-    blockinfile:
-      path: /home/judd.obannon/.vimrc
-      block: |
-        autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
+- hosts: localhost
+  become: no
+  tasks:
+    - name: set touchpad vars
+      dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+        state: present
+      with_items:
+        - { key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll", value: "false" }
+        - { key: "/org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled", value: "true" }
+        - { key: "/org/gnome/desktop/peripherals/touchpad/tap-to-click", value: "true" }
+        - { key: "/org/gnome/desktop/screensaver/lock-enabled", value: "false" }
+        - { key: "/org/gnome/setting-daemon/plugins/power/sleep-inactive-ac-timeout", value: "3600" }
+        - { key: "/org/gnome/setting-daemon/plugins/power/power-button-action", value: "hibernate" }
+    - name: setup vimrc
+      blockinfile:
+        path: /home/judd.obannon/.vimrc
+        block: |
+          autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
   
