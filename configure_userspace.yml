@@ -18,7 +18,7 @@
         - { key: "/org/gnome/terminal/background-color", value: "'rgb(0,0,0)'" }
         - { key: "/org/gnome/terminal/foreground-color", value: "'rgb(0,255,0)'" }
         - { key: "/org/gnome/terminal/scrollback-unlimited", value: "true" }
-        - { key: "/org/gnome/terminal/scrollbar-policy", value: "never" }
+        - { key: "/org/gnome/terminal/scrollbar-policy", value: "'never'" }
         - { key: "/org/gnome/terminal/use-theme-colors", value: "false" }
     - name: setup vimrc
       blockinfile:
