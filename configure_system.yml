@@ -28,3 +28,7 @@
       - HandleLidSwitch
       - HandleLidSwitchExternalPower
       - HandleLidSwitchDocked
+  - name: Restart systemd
+    systemd:
+      name: systemd-logind.service
+      state: restarted
