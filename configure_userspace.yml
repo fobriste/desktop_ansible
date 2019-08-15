@@ -15,7 +15,17 @@
         - { key: "/org/gnome/setting-daemon/plugins/power/power-button-action", value: "hibernate" }
     - name: setup vimrc
       blockinfile:
-        path: /home/judd.obannon/.vimrc
+        path: ~/.vimrc
         block: |
           autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
-  
+    - name: setup .bcrc
+      blockinfile:
+        path: ~/.bcrc
+        block: |
+          scale=2
+    - name: push .bcrc into bash
+      blockinfile:
+        path: ~/.bashrc
+        block: |
+          export BC_ENV_ARGS=~/.bcrc
+
