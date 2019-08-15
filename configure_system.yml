@@ -20,4 +20,12 @@
         - dconf-editor
         - ansible
       state: latest
-  
+  - name: Disable suspend on lid close 
+    lineinfile:
+      path: /etc/systemd/logind.conf
+      regexp: " {{item}}="
+      line: " {{item}}=ignore"
+    with_items: 
+      - HandleLidSwitch
+      - HandleLidSwitchExternalPower
+      - HandleLidSwitchDocked
