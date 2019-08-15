@@ -14,6 +14,12 @@
         - { key: "/org/gnome/desktop/screensaver/lock-enabled", value: "false" }
         - { key: "/org/gnome/setting-daemon/plugins/power/sleep-inactive-ac-timeout", value: "3600" }
         - { key: "/org/gnome/setting-daemon/plugins/power/power-button-action", value: "hibernate" }
+        - { key: "/org/gnome/terminal/audible-bell", value: "false" }
+        - { key: "/org/gnome/terminal/background-color", value: "'rgb(0,0,0)'" }
+        - { key: "/org/gnome/terminal/foreground-color", value: "'rgb(0,255,0)'" }
+        - { key: "/org/gnome/terminal/scrollback-unlimited", value: "true" }
+        - { key: "/org/gnome/terminal/scrollbar-policy", value: "never" }
+        - { key: "/org/gnome/terminal/use-theme-colors", value: "false" }
     - name: setup vimrc
       blockinfile:
         path: ~/.vimrc
