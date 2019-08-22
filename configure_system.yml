@@ -18,6 +18,7 @@
         - mplayer
         - dconf-editor
         - ansible
+        - xfreerdp
       state: latest
   - name: Disable suspend on lid close 
     lineinfile:
