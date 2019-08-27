@@ -15,11 +15,11 @@
         - { key: "/org/gnome/setting-daemon/plugins/power/sleep-inactive-ac-timeout", value: "3600" }
         - { key: "/org/gnome/setting-daemon/plugins/power/power-button-action", value: "hibernate" }
         - { key: "/org/gnome/terminal/audible-bell", value: "false" }
-        - { key: "/org/gnome/terminal/background-color", value: "'rgb(0,0,0)'" }
-        - { key: "/org/gnome/terminal/foreground-color", value: "'rgb(0,255,0)'" }
-        - { key: "/org/gnome/terminal/scrollback-unlimited", value: "true" }
-        - { key: "/org/gnome/terminal/scrollbar-policy", value: "'never'" }
-        - { key: "/org/gnome/terminal/use-theme-colors", value: "false" }
+        - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-color", value: "'rgb(0,0,0)'" }
+        - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/foreground-color", value: "'rgb(0,255,79)'" }
+        - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/scrollback-unlimited", value: "true" }
+        - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/scrollbar-policy", value: "'never'" }
+        - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-colors", value: "false" }
     - name: setup vimrc
       blockinfile:
         path: ~/.vimrc
