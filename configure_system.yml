@@ -19,6 +19,7 @@
         - dconf-editor
         - ansible
         - xfreerdp
+        - python2-requests
       state: latest
   - name: Disable suspend on lid close 
     lineinfile:
