@@ -20,6 +20,7 @@
         - ansible
         - xfreerdp
         - python2-requests
+        - python2-psutil
       state: latest
   - name: Disable suspend on lid close 
     lineinfile:
