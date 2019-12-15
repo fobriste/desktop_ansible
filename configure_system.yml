@@ -12,6 +12,7 @@
         enabled=1
         gpgcheck=1
         gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+      tags: repo
   - name: create brave repo
     copy:
       dest: /etc/yum.repos.d/brave-browser.repo
@@ -20,6 +21,7 @@
         name=brave-browser
         baseurl=https://brave-browser-rpm-release.s3.brave.com/x86_64/
         enabled=1
+    tags: repo
   - name: install rpm keys for above
     rpm_key:
       key: "{{ item }}"
@@ -27,12 +29,14 @@
     loop:
       - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
       - https://dl.google.com/linux/linux_signing_key.pub
+    tags: repo
   - name: configure rpmfusion
     dnf:
       state: present
       name: 
       -  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm
       -  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm
+    tags: repo
   - name: install packages
     dnf:
       name:
@@ -51,6 +55,10 @@
         - google-chrome
         - brave-browser
       state: latest
+  - name: update everything
+    dnf:
+      name: "*"
+      state: latest
   - name: Disable suspend on lid close 
     lineinfile:
       path: /etc/systemd/logind.conf
@@ -60,7 +68,9 @@
       - HandleLidSwitch
       - HandleLidSwitchExternalPower
       - HandleLidSwitchDocked
-  - name: Restart systemd
-    systemd:
-      name: systemd-logind.service
-      state: restarted
+  - name: Restart system
+      shell: nohup bash -c "sleep 2s && shutdown -r now" &
+      async: 1
+      poll: 0
+      ignore_errors: true
+
