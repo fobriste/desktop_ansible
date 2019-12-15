@@ -25,7 +25,7 @@
         dest: ~/.vimrc
         create: true
         content: |
-          autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
+          autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0 cuc
           autocmd filetype python set ts=4 et ai sw=4 sts=4 tw=79
           set background=dark
     - name: setup .bcrc
