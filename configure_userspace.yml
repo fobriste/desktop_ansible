@@ -21,12 +21,13 @@
         - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/scrollbar-policy", value: "'never'" }
         - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-colors", value: "false" }
     - name: setup vimrc
-      blockinfile:
-        path: ~/.vimrc
+      copy:
+        dest: ~/.vimrc
         create: true
-        block: |
+        content: |
           autocmd FileType yaml setlocal et ts=2 ai sw=2 sts=0
           autocmd filetype python set ts=4 et ai sw=4 sts=4 tw=79
+          set background=dark
     - name: setup .bcrc
       blockinfile:
         path: ~/.bcrc
