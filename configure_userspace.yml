@@ -2,7 +2,7 @@
   become: no
   ignore_errors: true
   tasks:
-    - name: set touchpad vars
+    - name: set gnome vars
       dconf:
         key: "{{ item.key }}"
         value: "{{ item.value }}"
@@ -38,4 +38,11 @@
         path: ~/.bashrc
         block: |
           export BC_ENV_ARGS=~/.bcrc
-
+    - name: set symlinks
+      file:
+        dest: /home/judd.obannon/{{ item.key }}
+        src: /home/judd.obannon/{{ item.value }}
+        state: link
+      loop: 
+        - { key: "Desktop", value: "desktop" }
+        - { key: "Downloads", value: "downloads" }

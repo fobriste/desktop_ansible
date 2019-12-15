@@ -2,6 +2,31 @@
   hosts: localhost
   become: yes
   tasks:
+  - name: create chrome repo
+    copy:
+      dest: /etc/yum.repos.d/google-chrome.repo
+      contents: |
+        [google-chrome]
+        name=google-chrome
+        baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+        enabled=1
+        gpgcheck=1
+        gpgkey=https://dl.google.com/linux/linux_signing_key.pub
+  - name: create brave repo
+    copy:
+      dest: /etc/yum.repos.d/brave-browser.repo
+      contents: |
+        [brave-browser-rpm-release.s3.brave.com_x86_64_]
+        name=brave-browser
+        baseurl=https://brave-browser-rpm-release.s3.brave.com/x86_64/
+        enabled=1
+  - name: install rpm keys for above
+    rpm_key:
+      key: "{{ item }}"
+      state: present
+    loop:
+      - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+      - https://dl.google.com/linux/linux_signing_key.pub
   - name: configure rpmfusion
     dnf:
       state: present
@@ -21,6 +46,10 @@
         - python3-requests
         - python3-psutil
         - dnf-automatic
+        - rpmdevtools
+        - feh
+        - google-chrome
+        - brave-browser
       state: latest
   - name: Disable suspend on lid close 
     lineinfile:
