@@ -26,7 +26,11 @@
         - { key: "/org/gnome/desktop/background/picture-options", value: "'wallpaper'" }
         - { key: "/org/gnome/desktop/background/picture-uri", value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'" }
         - { key: "/org/gnome/desktop/background/primary-color='#000000'", value: "'secondary-color='#000000'" }
-
+        - { key: "/ca/desrt/dconf-editor/show-warning" value: "false" }
+        - { key: "/org/gnome/shell/app-switcher/current-workspace-only", value: "true" }
+        - { key: "/org/gnome/desktop/interface/enable-animations", value: "false" }
+    - name: disable gnome hot corner
+      command: "gnome-shell-extension-tool -e gnome-shell-extension-no-topleft-hot-corner"
     - name: setup vimrc
       copy:
         dest: ~/.vimrc

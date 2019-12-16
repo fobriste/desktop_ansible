@@ -58,7 +58,14 @@
         - strace
         - gnome-tweaks
         - pangox-compat
+        - python3-html2text
+        - gnome-shell-extension-no-topleft-hot-corner
       state: latest
+  - name: fix for ciscos POS vpn software
+    dnf:
+      name: 
+        - NetworkManager-config-connectivity-fedora
+      state: absent
   - name: update everything
     dnf:
       name: "*"
