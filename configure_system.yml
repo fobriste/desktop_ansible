@@ -54,6 +54,10 @@
         - feh
         - google-chrome
         - brave-browser
+        - vimpager
+        - strace
+        - gnome-tweaks
+        - pangox-compat
       state: latest
   - name: update everything
     dnf:
