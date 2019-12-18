@@ -22,6 +22,10 @@
         baseurl=https://brave-browser-rpm-release.s3.brave.com/x86_64/
         enabled=1
     tags: repo
+  - name: create vimpager copr repo
+    command:
+      cmd: "dnf -y copr enable carlwgeorge/vimpager"
+      creates: '/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:carlwgeorge:vimpager.repo'
   - name: install rpm keys for above
     rpm_key:
       key: "{{ item }}"
@@ -29,6 +33,7 @@
     loop:
       - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
       - https://dl.google.com/linux/linux_signing_key.pub
+      - https://copr-be.cloud.fedoraproject.org/results/carlwgeorge/vimpager/pubkey.gpg
     tags: repo
   - name: configure rpmfusion
     dnf:
@@ -60,6 +65,7 @@
         - pangox-compat
         - python3-html2text
         - gnome-shell-extension-no-topleft-hot-corner
+        - clusterssh
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
@@ -80,8 +86,8 @@
       - HandleLidSwitchExternalPower
       - HandleLidSwitchDocked
   - name: Restart system
-      shell: nohup bash -c "sleep 2s && shutdown -r now" &
-      async: 1
-      poll: 0
-      ignore_errors: true
+    shell: nohup bash -c "sleep 2s && shutdown -r now" &
+    async: 1
+    poll: 0
+    ignore_errors: true
 
