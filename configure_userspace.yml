@@ -1,6 +1,7 @@
 - hosts: localhost
   become: no
   ignore_errors: true
+  gather_facts: false
   tasks:
     - name: set gnome vars
       dconf:
@@ -25,12 +26,14 @@
         - { key: "/org/gnome/desktop/background/color-shading-type", value: "'solid'" }
         - { key: "/org/gnome/desktop/background/picture-options", value: "'wallpaper'" }
         - { key: "/org/gnome/desktop/background/picture-uri", value: "'file:////usr/share/gnome-control-center/pixmaps/noise-texture-light.png'" }
-        - { key: "/org/gnome/desktop/background/primary-color='#000000'", value: "'secondary-color='#000000'" }
-        - { key: "/ca/desrt/dconf-editor/show-warning" value: "false" }
+        - { key: "/org/gnome/desktop/background/primary-color", value: "'#000000'" }
+        - { key: "/org/gnome/desktop/background/secondary-color", value: "'#000000'" }
+        - { key: "/ca/desrt/dconf-editor/show-warning", value: "false" }
         - { key: "/org/gnome/shell/app-switcher/current-workspace-only", value: "true" }
         - { key: "/org/gnome/desktop/interface/enable-animations", value: "false" }
+      tags: gnome
     - name: disable gnome hot corner
-      command: "gnome-shell-extension-tool -e gnome-shell-extension-no-topleft-hot-corner"
+      command: "/usr/bin/gnome-shell-extension-tool -e gnome-shell-extension-no-topleft-hot-corner"
     - name: setup vimrc
       copy:
         dest: ~/.vimrc
@@ -50,11 +53,12 @@
         path: ~/.bashrc
         block: |
           export BC_ENV_ARGS=~/.bcrc
+          alias sshlp='ssh -i ~/.ssh/id_linux-patching -l linux-patching'
     - name: set symlinks
       file:
         dest: /home/judd.obannon/{{ item.key }}
         src: /home/judd.obannon/{{ item.value }}
         state: link
       loop: 
-        - { key: "Desktop", value: "desktop" }
-        - { key: "Downloads", value: "downloads" }
+        - { key: "desktop", value: "Desktop" }
+        - { key: "downloads", value: "Downloads" }

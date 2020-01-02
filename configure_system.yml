@@ -67,6 +67,8 @@
         - gnome-shell-extension-no-topleft-hot-corner
         - clusterssh
         - gnumeric
+        - nmap
+        - python
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
