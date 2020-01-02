@@ -69,6 +69,7 @@
         - gnumeric
         - nmap
         - python
+        - ImageMagick
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
