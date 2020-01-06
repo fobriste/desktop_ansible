@@ -70,6 +70,7 @@
         - nmap
         - python
         - ImageMagick
+        - simplescreenrecorder
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
