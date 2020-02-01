@@ -12,7 +12,7 @@
         enabled=1
         gpgcheck=1
         gpgkey=https://dl.google.com/linux/linux_signing_key.pub
-      tags: repo
+    tags: repo
   - name: create brave repo
     copy:
       dest: /etc/yum.repos.d/brave-browser.repo
