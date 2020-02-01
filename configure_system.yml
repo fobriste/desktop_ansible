@@ -58,7 +58,7 @@
         - dnf-automatic
         - rpmdevtools
         - feh
-        - google-chrome
+        - google-chrome-stable
         - brave-browser
         - vimpager
         - strace
