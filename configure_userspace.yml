@@ -23,6 +23,7 @@
         - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/font", value: "'Source Code Pro Medium 12'" }
         - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/user-system-font", value: "false" }
         - { key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-colors", value: "false" }
+        - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings", value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']" }
         - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding", value: "'<Super>t'" }
         - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command", value: "'/usr/bin/gnome-terminal'" }
         - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name", value: "'terminal'" }
