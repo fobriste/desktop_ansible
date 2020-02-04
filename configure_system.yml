@@ -22,6 +22,7 @@
         baseurl=https://brave-browser-rpm-release.s3.brave.com/x86_64/
         enabled=1
     tags: repo
+    warn: false
   - name: create vimpager copr repo
     command:
       cmd: "dnf -y copr enable carlwgeorge/vimpager"
@@ -71,6 +72,9 @@
         - python
         - ImageMagick
         - simplescreenrecorder
+        - xorg-x11-drv-nvidia-cuda-libs
+        - gstreamer1-libav
+        - mock
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
@@ -86,10 +90,21 @@
       path: /etc/systemd/logind.conf
       regexp: " {{item}}="
       line: " {{item}}=ignore"
-    with_items: 
+    loop: 
       - HandleLidSwitch
       - HandleLidSwitchExternalPower
       - HandleLidSwitchDocked
+  - name: configure mock environments
+    copy:
+      src: "{{ item }}"
+      dest: "/etc/mock/{{ item }}"
+      owner: root
+      group: mock
+      mode: '0644'
+    loop:
+      - rax-rhel-6-x86_64.cfg
+      - rax-rhel-7-x86_64.cfg
+      - rax-rhel-8-x86_64.cfg
   - name: Restart system
     shell: nohup bash -c "sleep 2s && shutdown -r now" &
     async: 1
