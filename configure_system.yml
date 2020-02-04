@@ -76,6 +76,7 @@
         - xorg-x11-drv-nvidia-cuda-libs
         - gstreamer1-libav
         - mock
+        - git-lfs
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
