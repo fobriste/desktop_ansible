@@ -12,7 +12,7 @@
         enabled=1
         gpgcheck=1
         gpgkey=https://dl.google.com/linux/linux_signing_key.pub
-      tags: repo
+    tags: repo
   - name: create brave repo
     copy:
       dest: /etc/yum.repos.d/brave-browser.repo
@@ -27,6 +27,7 @@
     command:
       cmd: "dnf -y copr enable carlwgeorge/vimpager"
       creates: '/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:carlwgeorge:vimpager.repo'
+    warn: false
   - name: install rpm keys for above
     rpm_key:
       key: "{{ item }}"
@@ -58,7 +59,7 @@
         - dnf-automatic
         - rpmdevtools
         - feh
-        - google-chrome
+        - google-chrome-stable
         - brave-browser
         - vimpager
         - strace
