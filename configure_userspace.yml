@@ -57,6 +57,7 @@
         block: |
           export BC_ENV_ARGS=~/.bcrc
           alias sshlp='ssh -i ~/.ssh/id_linux-patching -l linux-patching'
+          alias gs='git status -s'
     - name: set symlinks
       file:
         dest: /home/judd.obannon/{{ item.key }}
