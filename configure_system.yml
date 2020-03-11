@@ -78,6 +78,8 @@
         - mock
         - git-lfs
         - expect
+        - exfat-utils
+        - fuse-exfat
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
