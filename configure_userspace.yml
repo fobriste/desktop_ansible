@@ -67,4 +67,4 @@
         src: /home/judd.obannon/{{ item.value }}
         state: link
       loop: 
-        - { key: "downloads", value: "Downloads" }
+        - { key: "Downloads", value: "downloads" }
