@@ -27,7 +27,7 @@
         - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding", value: "'<Super>t'" }
         - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command", value: "'/usr/bin/gnome-terminal'" }
         - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name", value: "'terminal'" }
-        - { key: "/org/gnome/desktop/vm/", value: "['/org/gnome/desktop/vm/keybindings/']" }
+        - { key: "/org/gnome/desktop/vm", value: "['/org/gnome/desktop/vm/keybindings/']" }
         - { key: "/org/gnome/desktop/vm/keybindings/panel-run-dialog", value: "['<Super>r']" }
         - { key: "/org/gnome/desktop/background/color-shading-type", value: "'solid'" }
         - { key: "/org/gnome/desktop/background/picture-options", value: "'wallpaper'" }
