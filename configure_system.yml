@@ -80,6 +80,7 @@
         - expect
         - exfat-utils
         - fuse-exfat
+        - calibre
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
