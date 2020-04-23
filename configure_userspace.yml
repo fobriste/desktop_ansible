@@ -61,6 +61,7 @@
           alias sshlp='ssh -i ~/.ssh/id_linux-patching -l linux-patching'
           alias gs='git status -s'
           alias mplayer='mplayer -af scaletempo'
+          alias cbast="xterm -bg black -fg red -e 'ssh cbast'"
     - name: set symlinks
       file:
         dest: /home/judd.obannon/{{ item.key }}
