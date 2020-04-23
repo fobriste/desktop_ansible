@@ -80,6 +80,8 @@
         - expect
         - exfat-utils
         - fuse-exfat
+        - calibre
+        - python2-simplejson
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
