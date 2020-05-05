@@ -22,12 +22,11 @@
         baseurl=https://brave-browser-rpm-release.s3.brave.com/x86_64/
         enabled=1
     tags: repo
-    warn: false
   - name: create vimpager copr repo
     command:
       cmd: "dnf -y copr enable carlwgeorge/vimpager"
       creates: '/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:carlwgeorge:vimpager.repo'
-    warn: false
+    command_warnings: false
   - name: install rpm keys for above
     rpm_key:
       key: "{{ item }}"
