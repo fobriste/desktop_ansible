@@ -63,6 +63,7 @@
           alias gs='git status -s'
           alias mplayer='mplayer -af scaletempo'
           alias cbast="xterm -bg black -fg red -geometry 40x10-0-0 -e 'ssh cbast'"
+          alias shrug='echo "¯\_(ツ)_/¯"'
     - name: set symlinks
       file:
         dest: /home/judd.obannon/{{ item.key }}
