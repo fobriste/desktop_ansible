@@ -116,4 +116,14 @@
     async: 1
     poll: 0
     ignore_errors: true
-
+  - name: configure dnf-automatic
+    lineinfile:
+      path: /etc/dnf/automatic.conf
+      regexp: "^apply_updates = "
+      line: "apply_updates = yes"
+  - name: enable dnf-automatic
+    service:
+      name: dnf-automatic.timer
+      state: started
+      enabled: true
+      
