@@ -38,6 +38,7 @@
         - { key: "/ca/desrt/dconf-editor/show-warning", value: "false" }
         - { key: "/org/gnome/shell/app-switcher/current-workspace-only", value: "true" }
         - { key: "/org/gnome/desktop/interface/enable-animations", value: "false" }
+        - { key: "/org/gnome/desktop/interface/enable-hot-corners", value: "false" }
       tags: gnome
     - name: disable gnome hot corner
       command: "/usr/bin/gnome-shell-extension-tool -e gnome-shell-extension-no-topleft-hot-corner"

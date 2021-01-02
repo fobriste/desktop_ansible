@@ -22,11 +22,12 @@
         baseurl=https://brave-browser-rpm-release.s3.brave.com/x86_64/
         enabled=1
     tags: repo
-  - name: create vimpager copr repo
-    command:
-      cmd: "dnf -y copr enable carlwgeorge/vimpager"
-      creates: '/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:carlwgeorge:vimpager.repo'
-      warn: no
+    #### commenting until f33 repo is available, I should probably go build that ####
+#  - name: create vimpager copr repo
+#    command:
+#      cmd: "dnf -y copr enable carlwgeorge/vimpager"
+#      creates: '/etc/yum.repos.d/_copr:copr.fedorainfracloud.org:carlwgeorge:vimpager.repo'
+#      warn: no
   - name: install rpm keys for above
     rpm_key:
       key: "{{ item }}"
@@ -39,6 +40,7 @@
   - name: configure rpmfusion
     dnf:
       state: present
+      disable_gpg_check: true
       name: 
       -  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm
       -  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm
@@ -60,12 +62,11 @@
         - feh
         - google-chrome-stable
         - brave-browser
-        - vimpager
+#        - vimpager
         - strace
         - gnome-tweaks
-        - pangox-compat
+#        - pangox-compat
         - python3-html2text
-        - gnome-shell-extension-no-topleft-hot-corner
         - clusterssh
         - gnumeric
         - nmap
@@ -80,7 +81,7 @@
         - exfat-utils
         - fuse-exfat
         - calibre
-        - python2-simplejson
+        - python3-simplejson
       state: latest
   - name: fix for ciscos POS vpn software
     dnf:
