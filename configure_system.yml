@@ -49,6 +49,7 @@
     dnf:
       name:
         - vim-enhanced
+        - vim-default-editor
         - gstreamer-plugins-ugly
         - gstreamer-plugins-bad
         - mplayer
